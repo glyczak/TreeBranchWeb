@@ -1,0 +1,11 @@
+﻿@model TreeBranchWeb.Models.Answer
+
+<tr>
+    <td>
+        <div class="form-group">
+            @Html.HiddenFor(m => m.Id)
+            @Html.TextBoxFor(m => m.Text, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Text)
+        </div>
+    </td>
+</tr>

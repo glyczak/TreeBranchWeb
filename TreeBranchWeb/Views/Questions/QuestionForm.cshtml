@@ -1,0 +1,32 @@
+﻿@using TreeBranchWeb.Models
+@model TreeBranchWeb.Models.Question
+@{
+    ViewBag.Title = (Model.Id == 0) ? "New Question" : "Edit Question";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Questions", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Text)
+        @Html.TextBoxFor(m => m.Text, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Text)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Answers)
+        <table>
+            <tbody>
+            @Html.EditorFor(m => m.Answers)
+            </tbody>
+        </table>
+    </div>
+    <div class="form-group">
+        <button type="submit" name="submitAction" value="addAnswer" class="btn btn-default">Add Answer</button>
+        <button type="submit" name="submitAction" value="removeAnswer" class="btn btn-danger"
+                @if (Model.Answers.Count <= 2) {
+                    @: disabled
+                } >Remove Last Answer</button>
+        <button type="submit" name="submitAction" value="save" class="btn btn-primary">Save Question</button>
+    </div>
+}
