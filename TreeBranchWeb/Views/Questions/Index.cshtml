@@ -1,0 +1,32 @@
+﻿@model TreeBranchWeb.Models.DichotomousKey
+@{
+    ViewBag.Title = "All Questions";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model.Questions.Count > 0)
+{
+    <table class="table">
+        <tbody>
+        @foreach (var question in Model.Questions)
+        {
+            <tr>
+                <th>@question.Text</th>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        This dichotomous key has no questions.  Consider 
+        @Html.ActionLink("adding one", "New", "Questions", new { @class = "alert-link" }).
+    </div> 
+}
+
+@Html.ActionLink("New Question", "New", "Questions", new { @class = "btn btn-default" +
+    (Model.QuestionsFinalized ? " disabled" : "")})
+@Html.ActionLink("Finalize Questions", "Finalize", "Questions", new { @class = "btn btn-danger" + 
+    (Model.Questions.Count < 2 || Model.QuestionsFinalized ? " disabled" : "")})

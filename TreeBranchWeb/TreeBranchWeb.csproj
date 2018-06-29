@@ -197,6 +197,10 @@
     <Compile Include="Migrations\201806270142331_ApplyConstraintsToKeyName.Designer.cs">
       <DependentUpon>201806270142331_ApplyConstraintsToKeyName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806290141434_OnlyLettersValidationForKeys.cs" />
+    <Compile Include="Migrations\201806290141434_OnlyLettersValidationForKeys.Designer.cs">
+      <DependentUpon>201806290141434_OnlyLettersValidationForKeys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -205,6 +209,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\OnlyLetters.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -267,6 +272,8 @@
     <Content Include="Views\Questions\QuestionForm.cshtml" />
     <Content Include="Views\Questions\EditorTemplates\Answer.cshtml" />
     <Content Include="Views\Keys\Index.cshtml" />
+    <Content Include="Views\Keys\View.cshtml" />
+    <Content Include="Views\Questions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -288,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806270142331_ApplyConstraintsToKeyName.resx">
       <DependentUpon>201806270142331_ApplyConstraintsToKeyName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806290141434_OnlyLettersValidationForKeys.resx">
+      <DependentUpon>201806290141434_OnlyLettersValidationForKeys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -25,24 +25,15 @@ namespace TreeBranchWeb.Controllers
         // GET: Keys/{keyName}/Questions
         public ActionResult Index(string keyName)
         {
-            var key = _context.DichotomousKeys.SingleOrDefault(
-                k => string.Compare(k.Name, keyName, true) == 0);
-            if (key == null)
-            {
-                return HttpNotFound();
-            }
-            return View();
+            var key = _context.GetDichotomousKeyOrNotFound(keyName);
+            ViewBag.KeyName = keyName;
+            return View(key);
         }
 
         // GET: Keys/{keyName}/Questions/New
         public ActionResult New(string keyName)
         {
-            var key = _context.DichotomousKeys.SingleOrDefault(
-                k => string.Compare(k.Name, keyName, true) == 0);
-            if (key == null)
-            {
-                return HttpNotFound();
-            }
+            _context.GetDichotomousKeyOrNotFound(keyName);
             ViewBag.KeyName = keyName;
             return View("QuestionForm", new Question());
         }

@@ -12,9 +12,12 @@ namespace TreeBranchWeb.Models
 
         [Required]
         [MinLength(1)]
+        [OnlyLetters]
         public string Name { get; set; }
 
         public bool QuestionsFinalized { get; set; }
+
+        public bool MatchesFinalized { get; set; }
 
         public ICollection<Question> Questions { get; set; }
 

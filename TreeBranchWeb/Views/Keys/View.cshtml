@@ -1,0 +1,55 @@
+﻿@model TreeBranchWeb.Models.DichotomousKey
+@{
+    ViewBag.Title = ViewBag.KeyName + " Key";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (!Model.QuestionsFinalized)
+{
+    <div class="alert alert-warning" role="alert">
+        This key has <strong>@Model.Questions.Count</strong> 
+        @if (Model.Questions.Count == 1)
+        {
+            @:question.
+        }
+        else
+        {
+            @:questions.
+        }
+        Consider @Html.ActionLink("adding questions", "New", "Questions", new { @class = "alert-link" }).
+        @if (Model.Questions.Count > 1)
+        {
+            @:If there are no more questions to add, 
+            Html.ActionLink("finalize questions", "Finalize", "Questions", new { @class = "alert-link" });
+            @:and move on to adding matches.
+        }
+    </div>
+}
+else if (!Model.MatchesFinalized)
+{
+    <div class="alert alert-warning" role="alert">
+        This key has <strong>@Model.Matches.Count</strong>
+        @if (Model.Matches.Count == 1)
+        {
+            @:match.
+        }
+        else
+        {
+            @:matches.
+        }
+        Consider @Html.ActionLink("adding matches", "New", "Matches", new { keyName = Model.Name }, new { @class = "alert-link" }).
+        @if (Model.Questions.Count > 1)
+        {
+            @:If there are no more matches to add,
+            Html.ActionLink("finalize matches", "Finalize", "Matches", new { keyName = Model.Name }, new { @class = "alert-link" });
+            @:and begin using the key.
+        }
+    </div>
+}
+
+@Html.ActionLink("Use Key", "Use", "Keys", new { @class = "btn btn-primary" })
+@Html.ActionLink("Edit Questions", "Index", "Questions", new { keyName = Model.Name }, new { @class = "btn btn-warning" +
+    (Model.QuestionsFinalized ? " disabled" : "") })
+@Html.ActionLink("Edit Matches", "Index", "Questions", new { keyName = Model.Name }, new { @class = "btn btn-warning" +
+    ((Model.MatchesFinalized || !Model.QuestionsFinalized) ? " disabled" : "") })

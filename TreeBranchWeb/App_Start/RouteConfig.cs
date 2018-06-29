@@ -12,23 +12,27 @@ namespace TreeBranchWeb
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
+
             routes.MapRoute(
-                name: "Keys",
-                url: "Keys/{keyName}/{controller}/{action}/{id}",
+                name: "KeyQuestions",
+                url: "Keys/{keyName}/Questions/{action}/{id}",
                 defaults: new
                 {
-                    controller = "Keys",
+                    controller = "Questions",
                     action = "Index",
                     id = UrlParameter.Optional
-                },
-                constraints: new
-                {
-                    keyName = @"(\p{L})+",
-                    controller = "Keys|Questions|Matches"
                 }
             );
-            
+
+            routes.MapRoute(
+                name: "Key",
+                url: "Keys/{keyName}/{action}",
+                defaults: new
+                {
+                    controller = "Keys"
+                }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
