@@ -23,9 +23,9 @@
                 <ul class="nav navbar-nav">
                     @if (ViewBag.KeyName != null)
                     {
-                        <li>@Html.ActionLink(ViewBag.KeyName as string + " Key", "Index", "Keys", new { keyName = ViewBag.KeyName })</li>
-                        <li>@Html.ActionLink("Questions", "Index", "Questions", new { keyName = ViewBag.KeyName })</li>
-                        <li>@Html.ActionLink("Matches", "Index", "Questions", new { keyName = ViewBag.KeyName })</li>
+                        <li>@Html.ActionLink(ViewBag.KeyName as string + " Key", "View", "Keys", new { keyName = ViewBag.KeyName }, new { })</li>
+                        <li>@Html.ActionLink("Questions", "Index", "Questions", new { keyName = ViewBag.KeyName }, new { })</li>
+                        <li>@Html.ActionLink("Matches", "Index", "Matches", new { keyName = ViewBag.KeyName }, new { })</li>
                     }
                     else
                     {

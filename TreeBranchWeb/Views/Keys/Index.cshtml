@@ -17,7 +17,8 @@
                 <p class="card-text">
                     <strong>@key.Matches.Count</strong> matches.
                 </p>
-                @Html.ActionLink("Use", "Use", "Keys", new { keyName = key.Name }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Use", "Use", "Keys", new { keyName = key.Name }, new { @class = "btn btn-primary" + 
+                    (key.MatchesFinalized ? "" : " disabled") })
                 @Html.ActionLink("View", "View", "Keys", new { keyName = key.Name }, new { @class = "btn btn-default" })
             </div>
         </div>

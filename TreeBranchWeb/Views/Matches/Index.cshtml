@@ -1,0 +1,32 @@
+﻿@model TreeBranchWeb.Models.DichotomousKey
+@{
+    ViewBag.Title = "All Matches";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model.Matches.Count > 0)
+{
+    <table class="table">
+        <tbody>
+        @foreach (var match in Model.Matches)
+        {
+            <tr>
+                <th>@match.Name</th>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        This dichotomous key has no matches.  Consider 
+        @Html.ActionLink("adding one", "New", "Matches", new { @class = "alert-link" }).
+    </div> 
+}
+
+@Html.ActionLink("New Match", "New", "Matches", new { @class = "btn btn-default" +
+    (!Model.QuestionsFinalized || Model.MatchesFinalized ? " disabled" : "")})
+@Html.ActionLink("Finalize Matches", "Finalize", "Questions", new { @class = "btn btn-danger" + 
+    (!Model.CanFinalizeMatches() || Model.MatchesFinalized ? " disabled" : "")})

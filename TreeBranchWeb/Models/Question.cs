@@ -13,7 +13,7 @@ namespace TreeBranchWeb.Models
         [Display(Name = "Question")]
         public string Text { get; set; }
 
-        public virtual ICollection<Answer> Answers { get; set; }
+        public ICollection<Answer> Answers { get; set; }
 
         public virtual DichotomousKey DichotomousKey { get; set; }
         public int DichotomousKeyId { get; set; }

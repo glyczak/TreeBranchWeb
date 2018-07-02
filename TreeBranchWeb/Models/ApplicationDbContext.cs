@@ -22,14 +22,10 @@ namespace TreeBranchWeb.Models
             return new ApplicationDbContext();
         }
 
-        public DichotomousKey GetDichotomousKeyOrNotFound(string keyName)
+        public DichotomousKey GetDichotomousKeyOrDefault(string keyName)
         {
             var key = this.DichotomousKeys.SingleOrDefault(
                 k => string.Compare(k.Name, keyName, true) == 0);
-            if (key == null)
-            {
-                throw new HttpException(404, "That dichotomous key was not found.");
-            }
             return key;
         }
     }

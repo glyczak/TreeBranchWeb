@@ -11,6 +11,12 @@ namespace TreeBranchWeb.Models
 
         public string Name { get; set; }
 
+        public bool IsDefined { get; set; }
+
+        public bool Exists { get; set; }
+
+        public ICollection<Answer> Answers { get; set; }
+
         public virtual DichotomousKey DichotomousKey { get; set; }
         public int DichotomousKeyId { get; set; }
     }

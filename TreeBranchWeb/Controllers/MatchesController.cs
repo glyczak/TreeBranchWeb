@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Http.Results;
 using System.Web.Mvc;
 using TreeBranchWeb.Models;
 
 namespace TreeBranchWeb.Controllers
 {
-    public class KeysController : Controller
+    public class MatchesController : Controller
     {
         private ApplicationDbContext _context;
 
-        public KeysController()
+        public MatchesController()
         {
             _context = new ApplicationDbContext();
         }
@@ -21,15 +23,8 @@ namespace TreeBranchWeb.Controllers
             _context.Dispose();
         }
 
-        // GET: Keys
-        public ActionResult Index()
-        {
-            var keys = _context.DichotomousKeys.ToList();
-            return View(keys);
-        }
-
-        // GET: Keys/{keyName}/Use
-        public ActionResult Use(string keyName)
+        // GET: Keys/{keyName}/Matches
+        public ActionResult Index(string keyName)
         {
             var key = _context.GetDichotomousKeyOrDefault(keyName);
             if (key == null) return HttpNotFound();
@@ -38,14 +33,24 @@ namespace TreeBranchWeb.Controllers
             return View(key);
         }
 
-        // GET: Keys/{keyName}/View
-        public ActionResult View(string keyName)
+        // GET: Keys/{keyName}/Matches/New
+        public ActionResult New(string keyName)
         {
             var key = _context.GetDichotomousKeyOrDefault(keyName);
             if (key == null) return HttpNotFound();
             ViewBag.KeyName = keyName;
 
-            return View(key);
+            if (!key.CanAddMatches())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "This key's matches are not modifiable.");
+            }
+            return View("MatchForm", new Match());
+        }
+
+        [HttpPost]
+        public ActionResult Save()
+        {
+            return View();
         }
     }
 }

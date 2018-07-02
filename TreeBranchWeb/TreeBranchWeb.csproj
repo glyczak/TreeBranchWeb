@@ -181,6 +181,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KeysController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MatchesController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -200,6 +201,10 @@
     <Compile Include="Migrations\201806290141434_OnlyLettersValidationForKeys.cs" />
     <Compile Include="Migrations\201806290141434_OnlyLettersValidationForKeys.Designer.cs">
       <DependentUpon>201806290141434_OnlyLettersValidationForKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807022329469_AddIsDefinedAndExistsToMatch.cs" />
+    <Compile Include="Migrations\201807022329469_AddIsDefinedAndExistsToMatch.Designer.cs">
+      <DependentUpon>201807022329469_AddIsDefinedAndExistsToMatch.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -274,6 +279,7 @@
     <Content Include="Views\Keys\Index.cshtml" />
     <Content Include="Views\Keys\View.cshtml" />
     <Content Include="Views\Questions\Index.cshtml" />
+    <Content Include="Views\Matches\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806290141434_OnlyLettersValidationForKeys.resx">
       <DependentUpon>201806290141434_OnlyLettersValidationForKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807022329469_AddIsDefinedAndExistsToMatch.resx">
+      <DependentUpon>201807022329469_AddIsDefinedAndExistsToMatch.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TreeBranchWeb.Migrations;
@@ -25,25 +26,43 @@ namespace TreeBranchWeb.Controllers
         // GET: Keys/{keyName}/Questions
         public ActionResult Index(string keyName)
         {
-            var key = _context.GetDichotomousKeyOrNotFound(keyName);
+            var key = _context.GetDichotomousKeyOrDefault(keyName);
+            if (key == null) return HttpNotFound();
             ViewBag.KeyName = keyName;
+
             return View(key);
         }
 
         // GET: Keys/{keyName}/Questions/New
         public ActionResult New(string keyName)
         {
-            _context.GetDichotomousKeyOrNotFound(keyName);
+            var key = _context.GetDichotomousKeyOrDefault(keyName);
+            if (key == null) return HttpNotFound();
             ViewBag.KeyName = keyName;
+
+            if (key.QuestionsFinalized)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "This key's questions are not modifiable.");
+            }
             return View("QuestionForm", new Question());
         }
 
+        // POST: /Keys/{keyName}/Questions/Save
         [HttpPost]
         public ActionResult Save(Question question, string keyName, string submitAction)
         {
+            var key = _context.GetDichotomousKeyOrDefault(keyName);
+            if (key == null) return HttpNotFound();
+            ViewBag.KeyName = keyName;
+
+            if (key.QuestionsFinalized)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "This key's questions are not modifiable.");
+            }
+
             if (submitAction.Equals("save"))
             {
-                
+                //TODO Save to DB.
             }
             else if (submitAction.Equals("addAnswer"))
             {
@@ -56,7 +75,6 @@ namespace TreeBranchWeb.Controllers
                     question.Answers.Remove(question.Answers.Last());
                 }
             }
-            ViewBag.KeyName = keyName;
             return View("QuestionForm", question);
         }
     }

@@ -13,7 +13,7 @@ namespace TreeBranchWeb.Models
         [Display(Name = "Answer")]
         public string Text { get; set; }
 
-        public Question Question { get; set; }
+        public virtual Question Question { get; set; }
         public int QuestionId { get; set; }
     }
 }
