@@ -13,6 +13,8 @@ namespace TreeBranchWeb.Models
         [Display(Name = "Answer")]
         public string Text { get; set; }
 
+        public ICollection<Match> Matches { get; set; }
+
         public virtual Question Question { get; set; }
         public int QuestionId { get; set; }
     }

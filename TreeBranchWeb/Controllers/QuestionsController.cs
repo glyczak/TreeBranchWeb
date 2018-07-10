@@ -62,7 +62,12 @@ namespace TreeBranchWeb.Controllers
 
             if (submitAction.Equals("save"))
             {
-                //TODO Save to DB.
+                if (ModelState.IsValid)
+                {
+                    key.Questions.Add(question);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             else if (submitAction.Equals("addAnswer"))
             {

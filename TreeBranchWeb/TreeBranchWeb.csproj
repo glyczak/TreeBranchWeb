@@ -206,6 +206,14 @@
     <Compile Include="Migrations\201807022329469_AddIsDefinedAndExistsToMatch.Designer.cs">
       <DependentUpon>201807022329469_AddIsDefinedAndExistsToMatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807040315010_SeedForestryKey.cs" />
+    <Compile Include="Migrations\201807040315010_SeedForestryKey.Designer.cs">
+      <DependentUpon>201807040315010_SeedForestryKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807102039186_ManyToManyMatchesAnswersRelationship.cs" />
+    <Compile Include="Migrations\201807102039186_ManyToManyMatchesAnswersRelationship.Designer.cs">
+      <DependentUpon>201807102039186_ManyToManyMatchesAnswersRelationship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -307,6 +315,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807022329469_AddIsDefinedAndExistsToMatch.resx">
       <DependentUpon>201807022329469_AddIsDefinedAndExistsToMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807040315010_SeedForestryKey.resx">
+      <DependentUpon>201807040315010_SeedForestryKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807102039186_ManyToManyMatchesAnswersRelationship.resx">
+      <DependentUpon>201807102039186_ManyToManyMatchesAnswersRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

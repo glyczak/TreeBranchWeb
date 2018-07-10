@@ -17,11 +17,11 @@
         {
             @:questions.
         }
-        Consider @Html.ActionLink("adding questions", "New", "Questions", new { @class = "alert-link" }).
+        Consider @Html.ActionLink("adding questions", "New", "Questions", new { keyName = Model.Name }, new { @class = "alert-link" }).
         @if (Model.CanFinalizeQuestions())
         {
             @:If there are no more questions to add, 
-            Html.ActionLink("finalize questions", "Finalize", "Questions", new { @class = "alert-link" });
+            Html.ActionLink("finalize questions", "Finalize", "Questions", new { keyName = Model.Name }, new { @class = "alert-link" });
             @:and move on to adding matches.
         }
     </div>
